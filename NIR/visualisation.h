@@ -20,6 +20,7 @@ public:
 
     // Визуализация орбит
     void PlotOrbits(const std::string& filename, const std::vector<std::string>& labels, const std::vector<std::string>& colors) const;
+
 private:
     std::vector<Body> bodies;
     std::vector<double> time_values;
