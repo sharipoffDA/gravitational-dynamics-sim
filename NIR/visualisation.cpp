@@ -237,31 +237,35 @@ void Visual::PlotOrbits(const std::string& filename, const std::vector<std::stri
             double xi, yi, zi;
             inp >> xi >> yi >> zi;
             x[i].push_back(xi / AU);
-            y[i].push_back(yi / AU);
+            y[i].push_back(yi / AU);     // Для визуализации в астрономических единицах
             z[i].push_back(zi / AU);
+            /*x[i].push_back(xi / 1000);
+            y[i].push_back(yi / 1000);   // Для визуализации в километрах
+            z[i].push_back(zi / 1000);*/
         }
     }
 
     inp.close();
 
     //График орбит на осях x и y
-    plt::figure();
     plt::figure_size(1000, 1000);
-    plt::rcparams({ { "font.size", "24" } });
+    plt::rcparams({ { "font.size", "21" } });
 
     for (int i = 0; i < bodies.size(); ++i) {
-        plt::plot(x[i], y[i], { {"label", labels[i]}, {"color", colors[i]} });
+        if (i == 0) plt::scatter(x[i], y[i], 100.0,{ {"label", labels[i]}, {"color", colors[i]} });
+        else plt::plot(x[i], y[i], { {"label", labels[i]}, {"color", colors[i]} });
+        //else plt::scatter(x[i], y[i], 50.0, { {"label", labels[i]}, {"color", colors[i]} });
     }
-    plt::title("Орбиты тел (X и Y)");
+    //plt::title("Орбиты тел (X и Y)");
     plt::xlim(-30, 30);
-    plt::xlabel("X (а.е.)");
-    plt::ylabel("Y (а.е.)");
+    plt::xlabel("X (a.e.)");
+    plt::ylabel("Y (a.e.)");
+    plt::legend({ { "fontsize", "15" } });
     //plt::legend();
     plt::grid(true);
     plt::axis("equal");
 
     // График орбит на осях x и z
-    plt::figure(2);
     plt::figure_size(1000, 1000);
     plt::rcparams({ { "font.size", "18" } });
 
