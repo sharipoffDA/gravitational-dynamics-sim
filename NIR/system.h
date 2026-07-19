@@ -2,6 +2,7 @@
 #include"struct.h"
 #include"visualisation.h"
 #include"algorithm.h"
+#include <limits>
 
 class BodySystem {
 
@@ -14,17 +15,17 @@ private:
     // Определение устойчивости системы
     class OrbitState {
     public:
-        double time; // Время
-        double distance; // Расстояние между телами
+        double time;         // Время
+        double distance;     // Расстояние между телами
         double eccentricity; // Эксцентриситет
     };
 
     // Параметры орбит
     class OrbitParameters {
     public:
-        double perihelion;  // Перицентр
-        double aphelion;    // Апоцентр
-        double eccentricity;  // Эксцентриситет
+        double perihelion;     // Перицентр
+        double aphelion;       // Апоцентр
+        double eccentricity;   // Эксцентриситет
         double semimajor_axis; // Большая полуось
     };
 
@@ -41,9 +42,6 @@ private:
     // Подробная информация про то, насколько отклоняется орбита на протяжении всего времени
     void SaveToFileOrbitHistory(const std::vector<std::vector<OrbitState>>& orbit_history);
 
-    // Центрирование системы после каждого оборота
-    void recenter();
-
     // Запись параметров орбиты в файл
     void SaveOrbitParameters(const std::string& filename) const;
 
@@ -54,19 +52,19 @@ public:
     BodySystem(const std::vector<Body>& initial_bodies);
 
     // Запись данных в файл и расчёт с помощью метода Leapfrog
-    void SaveToFile_Leapfrog(const std::string& filename, double t_end, double dt, bool usePNCorrection);
+    void SaveToFile_Leapfrog(const std::string& filename, double t_end, double dt, const std::vector<std::string>& names, bool usePNCorrection);
 
     // Запись данных в файл и расчёт с помощью метода Рунге-Кутта 2 порядка
-    void SaveToFile_RK2(const std::string& filename, double t_end, double dt, bool usePNCorrection);
+    void SaveToFile_RK2(const std::string& filename, double t_end, double dt, const std::vector<std::string>& names, bool usePNCorrection);
 
     // Запись данных в файл и расчёт с помощью метода Рунге-Кутта 4 порядка
-    void SaveToFile_RK4(const std::string& filename, double t_end, double dt, bool usePNCorrection);
+    void SaveToFile_RK4(const std::string& filename, double t_end, double dt, const std::vector<std::string>& names, bool usePNCorrection);
 
     // Запись данных в файл и расчёт с помощью метода Рунге-Кутта 6 порядка
-    void SaveToFile_RK6(const std::string& filename, double t_end, double dt, bool usePNCorrection);
+    void SaveToFile_RK6(const std::string& filename, double t_end, double dt, const std::vector<std::string>& names, bool usePNCorrection);
 
     // Запись данных в файл и расчёт с помощью метода Эйлера
-    void SaveToFile_Euler(const std::string& filename, double t_end, double dt, bool usePNCorrection);
+    void SaveToFile_Euler(const std::string& filename, double t_end, double dt, const std::vector<std::string>& names, bool usePNCorrection);
 
     Visual visual;
 };

@@ -38,11 +38,17 @@ double BodySystem::PotentialEnergy() const {
     return PE;
 }
 
-void BodySystem::SaveToFile_Leapfrog(const std::string& filename, double t_end, double dt, bool usePNCorrection) {
+void BodySystem::SaveToFile_Leapfrog(const std::string& filename, double t_end, double dt, const std::vector<std::string>& names, bool usePNCorrection = true) {
     std::ofstream out(filename);
-    for (double t = 0; t < t_end; t += dt) {
+    if (!out.is_open()) return;
 
-        recenter();
+    // Записываем имена первой строкой
+    for (size_t i = 0; i < names.size(); ++i) {
+        out << names[i] << (i == names.size() - 1 ? "" : " ");
+    }
+    out << "\n";
+
+    for (double t = 0; t < t_end; t += dt) {
 
         algorithm.Leapfrog(bodies, dt, usePNCorrection);
 
@@ -113,11 +119,27 @@ void BodySystem::SaveOrbitParameters(const std::string& filename) const {
 }
 
 // Запись данных в файл и расчёт с помощью метода Эйлера
-void BodySystem::SaveToFile_Euler(const std::string& filename, double t_end, double dt, bool usePNCorrection) {
+void BodySystem::SaveToFile_Euler(const std::string& filename, double t_end, double dt, const std::vector<std::string>& names, bool usePNCorrection = true) {
     std::ofstream out(filename);
-    for (double t = 0; t < t_end; t += dt) {
+    if (!out.is_open()) return;
 
-        recenter();
+    // Записываем имена первой строкой
+    for (size_t i = 0; i < names.size(); ++i) {
+        out << names[i] << (i == names.size() - 1 ? "" : " ");
+    }
+    out << "\n";
+
+    // Сброс параметров орбиты перед началом симуляции
+    for (auto& param : orbit_params) {
+        param.perihelion = std::numeric_limits<double>::max();
+        param.aphelion = 0.0;
+    }
+
+    time_values.clear();
+    energy_values.clear();
+    momentum_values.clear();
+
+    for (double t = 0; t < t_end; t += dt) {
 
         algorithm.EulerMethod(bodies, dt, usePNCorrection);
 
@@ -166,11 +188,27 @@ void BodySystem::SaveToFile_Euler(const std::string& filename, double t_end, dou
 }
 
 // Запись данных в файл и расчёт с помощью метода Рунге-Кутта 2 порядка
-void BodySystem::SaveToFile_RK2(const std::string& filename, double t_end, double dt, bool usePNCorrection) {
+void BodySystem::SaveToFile_RK2(const std::string& filename, double t_end, double dt, const std::vector<std::string>& names, bool usePNCorrection = true) {
     std::ofstream out(filename);
-    for (double t = 0; t < t_end; t += dt) {
+    if (!out.is_open()) return;
 
-        recenter();
+    // Записываем имена первой строкой
+    for (size_t i = 0; i < names.size(); ++i) {
+        out << names[i] << (i == names.size() - 1 ? "" : " ");
+    }
+    out << "\n";
+
+    // Сброс параметров орбиты перед началом симуляции
+    for (auto& param : orbit_params) {
+        param.perihelion = std::numeric_limits<double>::max();
+        param.aphelion = 0.0;
+    }
+
+    time_values.clear();
+    energy_values.clear();
+    momentum_values.clear();
+
+    for (double t = 0; t < t_end; t += dt) {
 
         algorithm.RungeKutta2(bodies, dt, usePNCorrection);
 
@@ -221,9 +259,15 @@ void BodySystem::SaveToFile_RK2(const std::string& filename, double t_end, doubl
 }
 
 // Запись данных в файл и расчёт с помощью метода Рунге-Кутта 4 порядка
-void BodySystem::SaveToFile_RK4(const std::string& filename, double t_end, double dt, bool use_relativistic = true) {
+void BodySystem::SaveToFile_RK4(const std::string& filename, double t_end, double dt, const std::vector<std::string>& names, bool usePNCorrection = true) {
     std::ofstream out(filename);
-    int cnt = 0;
+    if (!out.is_open()) return;
+
+    // Записываем имена первой строкой
+    for (size_t i = 0; i < names.size(); ++i) {
+        out << names[i] << (i == names.size() - 1 ? "" : " ");
+    }
+    out << "\n";
 
     // Сброс параметров орбиты перед началом симуляции
     for (auto& param : orbit_params) {
@@ -236,8 +280,8 @@ void BodySystem::SaveToFile_RK4(const std::string& filename, double t_end, doubl
     momentum_values.clear();
 
     for (double t = 0; t < t_end; t += dt) {
-        recenter();
-        algorithm.RungeKutta4(bodies, dt, use_relativistic);
+
+        algorithm.RungeKutta4(bodies, dt, usePNCorrection);
 
         // Запись данных
         out << t / year_to_sec << " ";
@@ -251,8 +295,6 @@ void BodySystem::SaveToFile_RK4(const std::string& filename, double t_end, doubl
         time_values.push_back(t / year_to_sec);
         energy_values.push_back(total_energy);
         momentum_values.push_back(Momentum());
-
-        cnt++;
 
         // Обновление параметров орбиты (для Меркурия и других планет)
         for (size_t i = 0; i < bodies.size(); ++i) {
@@ -279,79 +321,34 @@ void BodySystem::SaveToFile_RK4(const std::string& filename, double t_end, doubl
     }
 
     std::cout << "Результаты записаны в " << filename << ".\n";
-    std::cout << "Количество шагов: " << cnt << std::endl;
 
     visual = Visual(bodies, time_values, energy_values, momentum_values);
     SaveOrbitParameters("orbit_parameters.txt");
 }
-//void PlanetarySystem::SaveToFile_RK4(const std::string& filename, double t_end, double dt, bool usePNCorrection) {
-//    std::ofstream out(filename);
-//    int cnt = 0;
-//    for (double t = 0; t < t_end; t += dt) {
-//
-//        recenter();
-//
-//        algorithm.RungeKutta4(bodies, dt, usePNCorrection);
-//
-//        out << t / year_to_sec << " ";
-//        for (const auto& body : bodies) {
-//            out << body.x << " " << body.y << " " << body.z << " ";
-//        }
-//        out << "\n";
-//
-//        double total_energy = KineticEnergy() + PotentialEnergy();
-//
-//        time_values.push_back(t / year_to_sec);
-//        energy_values.push_back(total_energy);
-//        momentum_values.push_back(Momentum());
-//
-//        cnt++;
-//
-//        for (size_t i = 0; i < bodies.size(); ++i) {
-//
-//            double dx = bodies[i].x - bodies[0].x;
-//            double dy = bodies[i].y - bodies[0].y;
-//            double dz = bodies[i].z - bodies[0].z;
-//            double r = std::sqrt(dx * dx + dy * dy + dz * dz);
-//
-//            if (r < orbit_params[i].perihelion) {
-//                orbit_params[i].perihelion = r;
-//            }
-//            if (r > orbit_params[i].aphelion) {
-//                orbit_params[i].aphelion = r;
-//            }
-//        }
-//    }
-//    out.close();
-//    std::cout << "Результаты записаны в " << filename << ".\n";
-//
-//    for (size_t i = 0; i < bodies.size(); ++i) {
-//        orbit_params[i].eccentricity = (orbit_params[i].aphelion - orbit_params[i].perihelion) / (orbit_params[i].aphelion + orbit_params[i].perihelion);
-//    }
-//
-//    for (size_t i = 0; i < bodies.size(); ++i) {
-//        orbit_params[i].semimajor_axis = (orbit_params[i].aphelion + orbit_params[i].perihelion) * 0.5;
-//    }
-//
-//    std::cout << "\n" << cnt << std::endl;
-//
-//    visual = Visual(bodies, time_values, energy_values, momentum_values);
-//
-//    SaveOrbitParameters("orbit_parameters.txt");
-//}
 
-void BodySystem::SaveToFile_RK6(const std::string& filename, double t_end, double dt, bool usePNCorrection) {
+void BodySystem::SaveToFile_RK6(const std::string& filename, double t_end, double dt, const std::vector<std::string>& names, bool usePNCorrection = true) {
     std::ofstream out(filename);
+    if (!out.is_open()) return;
+
+    // Записываем имена первой строкой
+    for (size_t i = 0; i < names.size(); ++i) {
+        out << names[i] << (i == names.size() - 1 ? "" : " ");
+    }
+    out << "\n";
+
+    // Сброс параметров орбиты перед началом симуляции
+    for (auto& param : orbit_params) {
+        param.perihelion = std::numeric_limits<double>::max();
+        param.aphelion = 0.0;
+    }
+
+    time_values.clear();
+    energy_values.clear();
+    momentum_values.clear();
 
     std::vector<std::vector<OrbitState>> orbit_history(bodies.size());
 
-    std::vector<double> initial_distances(bodies.size(), 0.0);
-    std::vector<bool> is_unstable(bodies.size(), false);
-    double t_step = 0.0;
-
     for (double t = 0; t < t_end; t += dt) {
-
-        recenter();
 
         algorithm.RungeKutta6(bodies, dt, usePNCorrection);
         //if ((int)(t / year_to_sec) % 10000 == 0) t_step = (int)(t / year_to_sec);
@@ -377,23 +374,6 @@ void BodySystem::SaveToFile_RK6(const std::string& filename, double t_end, doubl
 
             if (r < orbit_params[i].perihelion) orbit_params[i].perihelion = r;
             if (r > orbit_params[i].aphelion) orbit_params[i].aphelion = r;
-
-
-            OrbitState state;
-            state.time = t;
-            state.distance = r;
-            orbit_history[i].push_back(state);
-
-
-            if (t > 0) {
-                double rel_change = fabs(r - initial_distances[i]) / initial_distances[i];
-                if (rel_change > 0.1) {
-                    is_unstable[i] = true;
-                }
-            }
-            else {
-                initial_distances[i] = r;
-            }
         }
     }
     out.close();
@@ -409,21 +389,6 @@ void BodySystem::SaveToFile_RK6(const std::string& filename, double t_end, doubl
 
     // Сохранение параметров орбиты
     SaveOrbitParameters("orbit_parameters.txt");
-
-    // Анализ и вывод информации об устойчивости
-    std::cout << "\nАнализ устойчивости системы:\n";
-    for (size_t i = 1; i < bodies.size(); ++i) { // начинаем с 1, так как 0 - это звезда
-        std::cout << "Тело " << i << ": ";
-        if (is_unstable[i]) {
-            std::cout << "НЕУСТОЙЧИВАЯ орбита (отклонение > 10%)\n";
-        }
-        else {
-            std::cout << "устойчивая орбита\n";
-        }
-        std::cout << "  Начальное расстояние: " << initial_distances[i] / AU << " а.е.\n";
-        std::cout << "  Эксцентриситет: " << orbit_params[i].eccentricity << "\n";
-        std::cout << "  Большая полуось: " << orbit_params[i].semimajor_axis / AU << " а.е.\n";
-    }
 }
 
 void BodySystem::SaveToFileOrbitHistory(const std::vector<std::vector<OrbitState>>& orbit_history) {
@@ -443,34 +408,4 @@ void BodySystem::SaveToFileOrbitHistory(const std::vector<std::vector<OrbitState
     stability_out.close();
 
     std::cout << "Детальный анализ устойчивости сохранен в stability_analysis.txt\n";
-}
-
-
-void BodySystem::recenter() {
-    size_t star_idx = 0;
-
-    double star_x = bodies[star_idx].x;
-    double star_y = bodies[star_idx].y;
-    double star_z = bodies[star_idx].z;
-    double star_vx = bodies[star_idx].vx;
-    double star_vy = bodies[star_idx].vy;
-    double star_vz = bodies[star_idx].vz;
-
-    for (size_t i = 0; i < bodies.size(); ++i) {
-        if (i != star_idx) {
-            bodies[i].x -= star_x;
-            bodies[i].y -= star_y;
-            bodies[i].z -= star_z;
-            bodies[i].vx -= star_vx;
-            bodies[i].vy -= star_vy;
-            bodies[i].vz -= star_vz;
-        }
-    }
-
-    bodies[star_idx].x = 0;
-    bodies[star_idx].y = 0;
-    bodies[star_idx].z = 0;
-    bodies[star_idx].vx = 0;
-    bodies[star_idx].vy = 0;
-    bodies[star_idx].vz = 0;
 }

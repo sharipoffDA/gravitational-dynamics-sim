@@ -1,0 +1,1199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1287</width>
+    <height>933</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Гравитационная динамика</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainVerticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget_2">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Гравитационный симулятор</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="tab3Layout">
+        <item>
+         <widget class="QSplitter" name="splitter">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="childrenCollapsible">
+           <bool>false</bool>
+          </property>
+          <widget class="QWidget" name="leftPanel" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>500</width>
+             <height>0</height>
+            </size>
+           </property>
+           <layout class="QVBoxLayout" name="leftVerticalLayout_Main">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QToolBox" name="toolBox">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="page_data">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>768</width>
+                 <height>893</height>
+                </rect>
+               </property>
+               <attribute name="label">
+                <string>Ввод данных и расчет</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="pageDataLayout">
+                <item>
+                 <widget class="QGroupBox" name="groupBox">
+                  <property name="title">
+                   <string>Ввод начальных условий</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="groupBoxLayout">
+                   <item>
+                    <widget class="QTabWidget" name="tabWidget">
+                     <property name="currentIndex">
+                      <number>0</number>
+                     </property>
+                     <widget class="QWidget" name="tab_7">
+                      <attribute name="title">
+                       <string>Декартовы координаты</string>
+                      </attribute>
+                      <layout class="QVBoxLayout" name="verticalLayout_6">
+                       <item>
+                        <layout class="QVBoxLayout" name="verticalLayout_3">
+                         <item>
+                          <layout class="QGridLayout" name="inputsGrid_2">
+                           <item row="0" column="0">
+                            <widget class="QLabel" name="lbl_M_2">
+                             <property name="text">
+                              <string>M (кг)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="0" column="1">
+                            <widget class="QLineEdit" name="lineEdit_M"/>
+                           </item>
+                           <item row="1" column="0">
+                            <widget class="QLabel" name="lbl_X_2">
+                             <property name="text">
+                              <string>X (м)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="1" column="1">
+                            <widget class="QLineEdit" name="lineEdit_X"/>
+                           </item>
+                           <item row="1" column="2">
+                            <widget class="QLabel" name="lbl_VX_2">
+                             <property name="text">
+                              <string>Vx (м/с)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="1" column="3">
+                            <widget class="QLineEdit" name="lineEdit_VX"/>
+                           </item>
+                           <item row="2" column="0">
+                            <widget class="QLabel" name="lbl_Y_2">
+                             <property name="text">
+                              <string>Y (м)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="1">
+                            <widget class="QLineEdit" name="lineEdit_Y"/>
+                           </item>
+                           <item row="2" column="2">
+                            <widget class="QLabel" name="lbl_VY_2">
+                             <property name="text">
+                              <string>Vy (м/с)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="3">
+                            <widget class="QLineEdit" name="lineEdit_VY"/>
+                           </item>
+                           <item row="3" column="0">
+                            <widget class="QLabel" name="lbl_Z_2">
+                             <property name="text">
+                              <string>Z (м)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="3" column="1">
+                            <widget class="QLineEdit" name="lineEdit_Z"/>
+                           </item>
+                           <item row="3" column="2">
+                            <widget class="QLabel" name="lbl_VZ_2">
+                             <property name="text">
+                              <string>Vz (м/с)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="3" column="3">
+                            <widget class="QLineEdit" name="lineEdit_VZ"/>
+                           </item>
+                           <item row="0" column="2">
+                            <widget class="QLabel" name="label_6">
+                             <property name="text">
+                              <string>Объект</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="0" column="3">
+                            <widget class="QLineEdit" name="lineEdit_ObjectName"/>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="tableButtonsLayout_2">
+                           <item>
+                            <widget class="QPushButton" name="pushButtonImport">
+                             <property name="text">
+                              <string>Импорт</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="pushButton_Add_XYZ">
+                             <property name="text">
+                              <string>Добавить</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="deleteButton_XYZ">
+                             <property name="text">
+                              <string>Удалить</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <widget class="QTableWidget" name="tableWidget_info_dekart">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>200</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="tab_8">
+                      <attribute name="title">
+                       <string>Кеплеровы элементы</string>
+                      </attribute>
+                      <layout class="QVBoxLayout" name="verticalLayout_7">
+                       <item>
+                        <layout class="QVBoxLayout" name="verticalLayout_8">
+                         <item>
+                          <layout class="QGridLayout" name="gridLayout_4">
+                           <item row="2" column="0">
+                            <widget class="QLabel" name="label_16">
+                             <property name="text">
+                              <string>Накл. орбиты (°)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="1">
+                            <widget class="QLineEdit" name="lineEdit_i"/>
+                           </item>
+                           <item row="1" column="0">
+                            <widget class="QLabel" name="label_17">
+                             <property name="text">
+                              <string>Бол. полуось a (a.e.)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="3" column="1">
+                            <widget class="QLineEdit" name="lineEdit_omega"/>
+                           </item>
+                           <item row="0" column="0">
+                            <widget class="QLabel" name="label_21">
+                             <property name="text">
+                              <string>Объект</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="0" column="1">
+                            <widget class="QLineEdit" name="lineEdit_ObjectName_Kepler"/>
+                           </item>
+                           <item row="1" column="1">
+                            <widget class="QLineEdit" name="lineEdit_a"/>
+                           </item>
+                           <item row="3" column="0">
+                            <widget class="QLabel" name="label_23">
+                             <property name="text">
+                              <string>Арг. периастра (°)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="4" column="0">
+                            <widget class="QLabel" name="label_22">
+                             <property name="text">
+                              <string>Долгота восх. узла (°)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="4" column="1">
+                            <widget class="QLineEdit" name="lineEdit_Omega"/>
+                           </item>
+                           <item row="0" column="2">
+                            <widget class="QLabel" name="label_19">
+                             <property name="text">
+                              <string>Масса (в массе Земли)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="0" column="3">
+                            <widget class="QLineEdit" name="lineEdit_M_Kepler"/>
+                           </item>
+                           <item row="1" column="2">
+                            <widget class="QLabel" name="label_20">
+                             <property name="text">
+                              <string>Эксцентриситет</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="1" column="3">
+                            <widget class="QLineEdit" name="lineEdit_ecc"/>
+                           </item>
+                           <item row="2" column="2">
+                            <widget class="QLabel" name="label_18">
+                             <property name="text">
+                              <string>Период обр. (дни)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="3">
+                            <widget class="QLineEdit" name="lineEdit_period_days"/>
+                           </item>
+                           <item row="3" column="2">
+                            <widget class="QLabel" name="label_24">
+                             <property name="text">
+                              <string>Время прох. периастра (год)</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="3" column="3">
+                            <widget class="QLineEdit" name="lineEdit_T_p_year"/>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_3">
+                           <item>
+                            <widget class="QPushButton" name="pushButtonImport_Kepler">
+                             <property name="text">
+                              <string>Импорт</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="pushButton_Add_Kepler">
+                             <property name="text">
+                              <string>Добавить</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="deleteButton_Kepler">
+                             <property name="text">
+                              <string>Удалить</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <widget class="QTableWidget" name="tableWidget_info_Kepler"/>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="paramsRelativityLayout">
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_2">
+                    <property name="title">
+                     <string>Параметры моделирования</string>
+                    </property>
+                    <layout class="QFormLayout" name="formLayout">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_2">
+                       <property name="text">
+                        <string>Время (года):</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLineEdit" name="lineEdit_SimulationTime"/>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_3">
+                       <property name="text">
+                        <string>Шаг (дни):</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLineEdit" name="lineEdit_TimeStep"/>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="label_4">
+                       <property name="text">
+                        <string>Численный метод</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QComboBox" name="comboBox_Methods">
+                       <item>
+                        <property name="text">
+                         <string>РК-2</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>РК-4</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>РК-6</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_3">
+                    <property name="title">
+                     <string>Релятивизм</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="relativityLayout">
+                     <item>
+                      <widget class="QRadioButton" name="radioButton_noEffect">
+                       <property name="text">
+                        <string>Не учитывать</string>
+                       </property>
+                       <property name="checked">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QRadioButton" name="radioButton_yesEffect">
+                       <property name="text">
+                        <string>Учитывать</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="comboBox_PN_correction">
+                       <item>
+                        <property name="text">
+                         <string>1-PN</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="fileLayout1">
+                  <property name="topMargin">
+                   <number>15</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="pushButton__Folder">
+                    <property name="text">
+                     <string>Папка сохранения</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lbl_path_Folder">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string>Папка не выбрана (по умолчанию с exe программы)</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButtonCalculate">
+                  <property name="text">
+                   <string>Рассчитать</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButtonCalculate_Visual">
+                  <property name="text">
+                   <string>Рассчитать и визуализировать</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="fileLayout2">
+                  <property name="topMargin">
+                   <number>15</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="pushButton_FileVisual">
+                    <property name="text">
+                     <string>Файл визуализации</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lbl_path_FileVisual">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string>Файл не выбран</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButtonVisual">
+                  <property name="text">
+                   <string>Визуализировать</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="vSpacerData">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="page_plot">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>612</width>
+                 <height>530</height>
+                </rect>
+               </property>
+               <attribute name="label">
+                <string>Настройки графика</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="pagePlotLayout">
+                <item>
+                 <widget class="QGroupBox" name="groupBox_PlotGeneral">
+                  <property name="title">
+                   <string>Общие настройки графика</string>
+                  </property>
+                  <layout class="QFormLayout" name="formLayoutPlot">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label">
+                     <property name="text">
+                      <string>Заголовок:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLineEdit" name="lineEdit_PlotTitle">
+                     <property name="placeholderText">
+                      <string>Введите название графика...</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="label">
+                     <property name="text">
+                      <string>Проекция:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QComboBox" name="comboBox_PlotProjection">
+                     <item>
+                      <property name="text">
+                       <string>XY (Вид сверху)</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>XZ (Вид сбоку)</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>YZ (Вид спереди)</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="label">
+                     <property name="text">
+                      <string>Оформление:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QComboBox" name="comboBox_PlotTheme">
+                     <item>
+                      <property name="text">
+                       <string>Светлая тема</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Темная тема </string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="label">
+                     <property name="text">
+                      <string>Шрифт осей:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QSpinBox" name="spinBox_PlotFontSize">
+                     <property name="minimum">
+                      <number>6</number>
+                     </property>
+                     <property name="maximum">
+                      <number>24</number>
+                     </property>
+                     <property name="value">
+                      <number>10</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0" colspan="2">
+                    <layout class="QHBoxLayout">
+                     <item>
+                      <widget class="QCheckBox" name="checkBox_PlotAxisLabels">
+                       <property name="text">
+                        <string>Показывать подписи к осям</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="checkBox_PlotLegend">
+                       <property name="enabled">
+                        <bool>true</bool>
+                       </property>
+                       <property name="text">
+                        <string>Показывать легенду</string>
+                       </property>
+                       <property name="checked">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="checkBox_PlotGrid">
+                       <property name="text">
+                        <string>Отображать сетку</string>
+                       </property>
+                       <property name="checked">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_PlotBodies">
+                  <property name="title">
+                   <string>Отображение тел</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="plotBodiesLayout">
+                   <item>
+                    <widget class="QTableWidget" name="tableWidget_PlotSettings">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>150</height>
+                      </size>
+                     </property>
+                     <property name="selectionMode">
+                      <enum>QAbstractItemView::SelectionMode::NoSelection</enum>
+                     </property>
+                     <column>
+                      <property name="text">
+                       <string>Вид</string>
+                      </property>
+                     </column>
+                     <column>
+                      <property name="text">
+                       <string>Имя в легенде</string>
+                      </property>
+                     </column>
+                     <column>
+                      <property name="text">
+                       <string>Цвет орбиты</string>
+                      </property>
+                     </column>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="plotActionsLayout">
+                  <item>
+                   <widget class="QPushButton" name="pushButton_PlotRescale">
+                    <property name="text">
+                     <string>Авто-масштаб</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton_PlotSavePNG">
+                    <property name="text">
+                     <string>Сохранить график (PNG)</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButtonApplySettings">
+                  <property name="text">
+                   <string>Применить настройки</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="vSpacerPlot">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QCustomPlot" name="customPlot" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>400</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_gw">
+       <attribute name="title">
+        <string>TEOBResumS (Слияние ЧД/НЗ)</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="layout_gw_main">
+        <item>
+         <widget class="QSplitter" name="gw_main_splitter">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <widget class="QGroupBox" name="gw_group_params">
+           <property name="maximumSize">
+            <size>
+             <width>700</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="title">
+            <string>1. Параметры системы</string>
+           </property>
+           <layout class="QVBoxLayout" name="vbox_params">
+            <item>
+             <layout class="QFormLayout" name="formLayout_gw">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_systemType">
+                <property name="text">
+                 <string>Тип системы:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="gw_combo_systemType">
+                <item>
+                 <property name="text">
+                  <string>BBH (Черные дыры)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>BNS (Нейтронные звезды)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>BHNS (ЧД + НЗ)</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_mass1">
+                <property name="text">
+                 <string>Масса 1 (M⊙):</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="lineEdit_m1">
+                <property name="text">
+                 <string>1.4</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_mass2">
+                <property name="text">
+                 <string>Масса 2 (M⊙):</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="lineEdit_m2">
+                <property name="text">
+                 <string>1.4</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="label_spin1">
+                <property name="text">
+                 <string>Спин 1z:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLineEdit" name="lineEdit_s1z">
+                <property name="text">
+                 <string>0.0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="label_spin2">
+                <property name="text">
+                 <string>Спин 2z:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QLineEdit" name="lineEdit_s2z">
+                <property name="text">
+                 <string>0.0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLabel" name="label_f0_val">
+                <property name="text">
+                 <string>Начальная частота f0:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <widget class="QLineEdit" name="lineEdit_f0">
+                <property name="text">
+                 <string>20</string>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QLabel" name="label_distance">
+                <property name="text">
+                 <string>Дистанция (Mpc):</string>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="1">
+               <widget class="QLineEdit" name="lineEdit_dist">
+                <property name="text">
+                 <string>1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="0">
+               <widget class="QLabel" name="label_l1_val">
+                <property name="text">
+                 <string>Lambda 1:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="1">
+               <widget class="QLineEdit" name="lineEdit_LambdaAl2">
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="0">
+               <widget class="QLabel" name="label_l2_val">
+                <property name="text">
+                 <string>Lambda 2:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="1">
+               <widget class="QLineEdit" name="lineEdit_LambdaBl2">
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Объект 1:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="gw_lineEdit_name1"/>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Объект 2:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QLineEdit" name="gw_lineEdit_name2"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnBuildStudyPlot">
+              <property name="text">
+               <string>Кнопка</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_params">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="gw_btn_calculate">
+              <property name="styleSheet">
+               <string>font-weight: bold; height: 30px;</string>
+              </property>
+              <property name="text">
+               <string>Рассчитать TEOBResumS</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_4">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>70</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>0</width>
+                <height>70</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Сохранение графиков</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_save_Dynamic_GW">
+                   <property name="text">
+                    <string>Динамика слияния</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_save_GW">
+                   <property name="text">
+                    <string>Гравитационные волны</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QGroupBox" name="gw_group_visual">
+           <property name="title">
+            <string>2. Симуляция и графика</string>
+           </property>
+           <layout class="QVBoxLayout" name="vbox_visual">
+            <item>
+             <layout class="QHBoxLayout" name="layout_settings">
+              <item>
+               <widget class="QCheckBox" name="gw_chk_showWave">
+                <property name="text">
+                 <string>Показать волну</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="gw_combo_waveColor">
+                <item>
+                 <property name="text">
+                  <string>Red</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Blue</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Green</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Black</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="gw_spin_fontSize">
+                <property name="suffix">
+                 <string> px</string>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="value">
+                 <number>2</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_settings">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_plotMode">
+                <property name="text">
+                 <string>Режим:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="gw_combo_plotLayout">
+                <item>
+                 <property name="text">
+                  <string>Оба графика</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Только динамика</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Только волна</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QSplitter" name="gw_plot_splitter">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <widget class="QCustomPlot" name="gw_plot_dynamics" native="true"/>
+              <widget class="QCustomPlot" name="gw_plot_waveform" native="true"/>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="layout_slider">
+              <item>
+               <widget class="QLabel" name="gw_lbl_tail">
+                <property name="text">
+                 <string>Отображение: 100%</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSlider" name="gw_slider_tail">
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="value">
+                 <number>100</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1287</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExit">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
